@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow" />
+  <title>Bolt SSH — 技术支持 / Support</title>
+  <link rel="stylesheet" href="shared/base.css" />
+  <style>
+    .lang-switch {
+      position: fixed; top: 14px; right: 14px; z-index: 20;
+      display: inline-flex; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 999px; overflow: hidden; font-size: 13px; font-weight: 600;
+    }
+    .lang-switch button { border: none; background: transparent; color: var(--fg-muted); padding: 6px 14px; cursor: pointer; font: inherit; }
+    .lang-switch button.on { background: var(--accent); color: #fff; }
+    .lang-hans, .lang-en { display: none; }
+    body.l-hans .lang-hans { display: inline; }
+    body.l-en   .lang-en   { display: inline; }
+    .faq-q { font-weight: 600; margin: 22px 0 6px; }
+  </style>
+</head>
+<body class="l-hans">
+  <div class="lang-switch">
+    <button data-lang="hans" class="on">简体</button>
+    <button data-lang="en">EN</button>
+  </div>
+
+  <div class="wrap">
+    <header class="doc-header">
+      <span class="app">Bolt SSH</span>
+      <h1>
+        <span class="lang-hans">技术支持</span>
+        <span class="lang-en">Support</span>
+      </h1>
+      <p class="meta">
+        <span class="lang-hans">需要帮助吗？先看下方常见问题，或直接写信给我们。</span>
+        <span class="lang-en">Need help? Check the FAQ below, or email us directly.</span>
+      </p>
+    </header>
+
+    <h2>
+      <span class="lang-hans">联系我们</span>
+      <span class="lang-en">Contact Us</span>
+    </h2>
+    <p>
+      <span class="lang-hans">任何问题、建议或意见，欢迎来信，我们会尽快回复：</span>
+      <span class="lang-en">For any question, suggestion, or feedback, email us and we'll get back to you as soon as we can:</span>
+    </p>
+    <ul>
+      <li>Email: <a href="mailto:wondergarden.app@qq.com">wondergarden.app@qq.com</a></li>
+    </ul>
+
+    <h2>
+      <span class="lang-hans">常见问题</span>
+      <span class="lang-en">FAQ</span>
+    </h2>
+
+    <p class="faq-q">
+      <span class="lang-hans">如何添加第一台主机？</span>
+      <span class="lang-en">How do I add my first host?</span>
+    </p>
+    <p>
+      <span class="lang-hans">点击右上角 <strong>+</strong> 按钮，填写主机 IP 地址、端口（默认 22）和用户名，选择认证方式（密码或 SSH 密钥），保存后即可点击连接。</span>
+      <span class="lang-en">Tap the <strong>+</strong> button in the top-right corner, enter the host IP, port (default 22), and username, choose an authentication method (password or SSH key), then save and tap to connect.</span>
+    </p>
+
+    <p class="faq-q">
+      <span class="lang-hans">支持哪些认证方式？</span>
+      <span class="lang-en">What authentication methods are supported?</span>
+    </p>
+    <p>
+      <span class="lang-hans">支持<strong>密码认证</strong>和 <strong>SSH 密钥认证</strong>（OpenSSH / RSA PEM 格式）。密钥文件加密存储在系统 Keychain 中，不会以明文保存。</span>
+      <span class="lang-en">Both <strong>password</strong> and <strong>SSH key</strong> authentication are supported (OpenSSH / RSA PEM format). Key files are encrypted and stored in the system Keychain — never in plaintext.</span>
+    </p>
+
+    <p class="faq-q">
+      <span class="lang-hans">如何导入 SSH 密钥？</span>
+      <span class="lang-en">How do I import an SSH key?</span>
+    </p>
+    <p>
+      <span class="lang-hans">进入主机编辑页，将认证方式切换为"密钥"，然后选择"导入密钥文件"（支持从文件 App 导入），或选择"粘贴"直接粘贴私钥内容。如果密钥设有口令，连接时会提示输入。</span>
+      <span class="lang-en">On the host edit screen, switch the auth method to "Key", then choose "Import Key File" (from the Files app) or "Paste" to paste the private key directly. If your key has a passphrase, you'll be prompted for it at connection time.</span>
+    </p>
+
+    <p class="faq-q">
+      <span class="lang-hans">连接失败怎么办？</span>
+      <span class="lang-en">What should I do if the connection fails?</span>
+    </p>
+    <p>
+      <span class="lang-hans">请按以下顺序检查：</span>
+      <span class="lang-en">Try the following in order:</span>
+    </p>
+    <ul>
+      <li>
+        <span class="lang-hans">确认 Windows 端 OpenSSH 服务已启动（<code>services.msc</code> 中找到"OpenSSH SSH Server"并设为自动）。</span>
+        <span class="lang-en">Make sure the OpenSSH SSH Server service is running on Windows (find it in <code>services.msc</code> and set it to Automatic).</span>
+      </li>
+      <li>
+        <span class="lang-hans">确认 IP 地址和端口填写正确；真机连接局域网时请填 Windows 的局域网 IP，不要用 <code>localhost</code>。</span>
+        <span class="lang-en">Check that the IP and port are correct. On a real device, use the Windows LAN IP — not <code>localhost</code>.</span>
+      </li>
+      <li>
+        <span class="lang-hans">确认 Windows 防火墙允许 22 端口（或你自定义的端口）的入站连接。</span>
+        <span class="lang-en">Make sure Windows Firewall allows inbound connections on port 22 (or your custom port).</span>
+      </li>
+      <li>
+        <span class="lang-hans">模拟器连接宿主机请使用 <code>10.0.2.2</code> 而非 <code>localhost</code>。</span>
+        <span class="lang-en">If using the Android emulator, use <code>10.0.2.2</code> instead of <code>localhost</code> to reach the host machine.</span>
+      </li>
+    </ul>
+
+    <p class="faq-q">
+      <span class="lang-hans">出现"主机密钥已变更"警告是什么意思？</span>
+      <span class="lang-en">What does the "host key changed" warning mean?</span>
+    </p>
+    <p>
+      <span class="lang-hans">Bolt SSH 在首次连接时会记录服务器的主机密钥（TOFU 机制）。如果密钥与之前不符，可能意味着服务器被重装或存在中间人风险。若你确认服务端刚刚重装过，请在主机菜单选择<strong>「忘记主机密钥」</strong>后重新连接。</span>
+      <span class="lang-en">Bolt SSH records the server's host key on first connection (Trust On First Use). A mismatch could mean the server was reinstalled or that there's a man-in-the-middle risk. If you know the server was legitimately reinstalled, select <strong>"Forget host key"</strong> from the host menu and reconnect.</span>
+    </p>
+
+    <p class="faq-q">
+      <span class="lang-hans">如何开启多个终端标签？</span>
+      <span class="lang-en">How do I open multiple terminal tabs?</span>
+    </p>
+    <p>
+      <span class="lang-hans">连接成功后，点击右上角 <strong>+</strong> 按钮即可新开一个会话标签（连接同一台主机）。长按标签可重命名，点击 × 关闭。</span>
+      <span class="lang-en">Once connected, tap the <strong>+</strong> button in the top-right corner to open a new session tab (on the same host). Long-press a tab to rename it, or tap × to close it.</span>
+    </p>
+
+    <p class="faq-q">
+      <span class="lang-hans">断开后如何重连？</span>
+      <span class="lang-en">How do I reconnect after a disconnect?</span>
+    </p>
+    <p>
+      <span class="lang-hans">切回 App 前台时会自动重连。也可点击终端顶部的状态栏（显示"已断开 · 点此重连"）手动触发。重连后会自动恢复到上次所在的工作目录。</span>
+      <span class="lang-en">Bolt SSH reconnects automatically when you bring the app to the foreground. You can also tap the status bar at the top of the terminal (showing "Disconnected · Tap to reconnect") to reconnect manually. Your last working directory is restored automatically.</span>
+    </p>
+
+    <p class="faq-q">
+      <span class="lang-hans">什么是应用锁？</span>
+      <span class="lang-en">What is App Lock?</span>
+    </p>
+    <p>
+      <span class="lang-hans">应用锁开启后，每次打开 Bolt SSH 需通过 Face ID 或指纹验证。可在右上角设置菜单中开启或关闭。适合在共享设备上保护终端会话不被他人查看。</span>
+      <span class="lang-en">When App Lock is enabled, opening Bolt SSH requires Face ID or fingerprint authentication. You can toggle it in the settings menu (top-right corner). It's useful for protecting terminal sessions on shared devices.</span>
+    </p>
+
+    <p class="faq-q">
+      <span class="lang-hans">免费版有什么限制？</span>
+      <span class="lang-en">What are the free version limitations?</span>
+    </p>
+    <p>
+      <span class="lang-hans">免费版最多保存 <strong>2 台主机</strong>。如需管理更多主机，可升级至 Pro 版本解锁无限主机。</span>
+      <span class="lang-en">The free version allows saving up to <strong>2 hosts</strong>. Upgrade to Pro to unlock unlimited hosts.</span>
+    </p>
+
+    <p class="faq-q">
+      <span class="lang-hans">如何管理或取消订阅？</span>
+      <span class="lang-en">How do I manage or cancel my subscription?</span>
+    </p>
+    <p>
+      <span class="lang-hans">订阅由 Apple App Store 管理。请前往 iPhone 的「设置 → Apple 账户 → 订阅」中查看、变更或取消。取消后仍可使用已付费周期内的权益至到期为止。</span>
+      <span class="lang-en">Subscriptions are managed by the Apple App Store. Go to "Settings → Apple Account → Subscriptions" on your iPhone to view, change, or cancel. After canceling, you keep your benefits until the end of the current billing period.</span>
+    </p>
+
+    <h2>
+      <span class="lang-hans">相关链接</span>
+      <span class="lang-en">Links</span>
+    </h2>
+    <ul>
+      <li><a href="privacy.html">
+        <span class="lang-hans">隐私政策</span>
+        <span class="lang-en">Privacy Policy</span>
+      </a></li>
+      <li><a href="terms.html">
+        <span class="lang-hans">服务条款</span>
+        <span class="lang-en">Terms of Service</span>
+      </a></li>
+    </ul>
+
+    <footer class="doc-footer">
+      © 2026 Wenbo Qiu ｜ Bolt SSH
+    </footer>
+  </div>
+
+  <script>
+    const btns = [...document.querySelectorAll(".lang-switch button")];
+    function setLang(lang) {
+      document.body.className = "l-" + lang;
+      document.documentElement.lang = lang === "en" ? "en" : "zh-Hans";
+      btns.forEach(b => b.classList.toggle("on", b.dataset.lang === lang));
+    }
+    btns.forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+    const nav = (navigator.language || "").toLowerCase();
+    setLang(nav.startsWith("zh") ? "hans" : "en");
+  </script>
+</body>
+</html>
