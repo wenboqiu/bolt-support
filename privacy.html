@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index,follow" />
+  <title>Bolt SSH — 隐私政策 / Privacy Policy</title>
+  <link rel="stylesheet" href="shared/base.css" />
+  <style>
+    .lang-switch {
+      position: fixed; top: 14px; right: 14px; z-index: 20;
+      display: inline-flex; background: var(--bg); border: 1px solid var(--border);
+      border-radius: 999px; overflow: hidden; font-size: 13px; font-weight: 600;
+    }
+    .lang-switch button { border: none; background: transparent; color: var(--fg-muted); padding: 6px 14px; cursor: pointer; font: inherit; }
+    .lang-switch button.on { background: var(--accent); color: #fff; }
+    .lang-hans, .lang-en { display: none; }
+    body.l-hans .lang-hans { display: block; }
+    body.l-en   .lang-en   { display: block; }
+  </style>
+</head>
+<body class="l-hans">
+  <div class="lang-switch">
+    <button data-lang="hans" class="on">简体</button>
+    <button data-lang="en">EN</button>
+  </div>
+
+  <!-- ───────── 简体中文 ───────── -->
+  <div class="wrap lang-hans">
+    <header class="doc-header">
+      <span class="app">Bolt SSH</span>
+      <h1>隐私政策</h1>
+      <p class="meta">生效日期：2026 年 7 月 11 日 ｜ 最近更新：2026 年 7 月 11 日</p>
+    </header>
+
+    <p>
+      Wenbo Qiu（以下简称"我们"）非常重视您的个人信息与隐私保护。本《隐私政策》旨在向您说明，当您使用 Bolt SSH（以下简称"本应用"）时，我们如何收集、使用与保护您的相关信息，以及您所享有的权利。
+    </p>
+
+    <div class="note">
+      本应用以"按需授权、最小收集"为原则。您的 SSH 凭据、私钥及终端会话内容<strong>始终保留在您的设备上或直接传输至您自己的服务器</strong>，我们的服务器不会接触这些数据。
+    </div>
+
+    <h2>一、我们如何收集与使用您的信息</h2>
+    <table>
+      <thead>
+        <tr><th>场景</th><th>收集的信息</th><th>用途</th><th>存储位置</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>主机管理</td>
+          <td>主机 IP、端口、用户名、标签名称、标记颜色（不含密码，除非您主动开启"保存密码"）</td>
+          <td>在设备本地保存主机列表</td>
+          <td>设备本地（SharedPreferences）</td>
+        </tr>
+        <tr>
+          <td>SSH 密钥</td>
+          <td>您导入的私钥文件内容</td>
+          <td>用于 SSH 密钥认证</td>
+          <td>设备系统 Keychain（加密存储）</td>
+        </tr>
+        <tr>
+          <td>保存的密码（可选）</td>
+          <td>您主动开启"保存密码"时的登录密码</td>
+          <td>免去每次连接时手动输入</td>
+          <td>设备系统 Keychain（加密存储）</td>
+        </tr>
+        <tr>
+          <td>应用锁</td>
+          <td>应用锁开关状态</td>
+          <td>下次启动时决定是否需要 Face ID / 指纹验证</td>
+          <td>设备本地</td>
+        </tr>
+        <tr>
+          <td>匿名使用统计</td>
+          <td>应用内行为事件（如：打开应用、连接尝试成功/失败、新建/关闭标签、导入/删除密钥等），<strong>不含任何可识别您身份的信息</strong></td>
+          <td>了解功能使用情况，指导产品改进</td>
+          <td>我们自托管的 Pulse 统计服务（pulse.wondergarden.top）</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>二、SSH 连接与终端内容</h2>
+    <p>
+      您在终端中输入的命令及服务器的响应内容<strong>直接在您的设备与您自己的 SSH 服务器之间传输</strong>，采用 SSH 协议加密，不经过我们的任何服务器，我们无法访问这些内容。
+    </p>
+    <p>主机密钥（Host Key）的哈希值存储在设备本地，用于连接时的 TOFU（首次信任）验证，防止中间人攻击，同样不上传至我们的服务器。</p>
+
+    <h2>三、第三方服务</h2>
+    <table>
+      <thead><tr><th>第三方</th><th>用途</th><th>涉及的信息</th></tr></thead>
+      <tbody>
+        <tr><td>Apple（内购，上线 Pro 后启用）</td><td>App Store 订阅与支付</td><td>交易凭证</td></tr>
+        <tr><td>自托管 Pulse 统计</td><td>匿名使用统计</td><td>匿名行为事件（见上表）</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      本应用<strong>不接入任何第三方广告或跨应用追踪 SDK</strong>，亦不收集用于广告投放的设备标识符。
+    </div>
+
+    <h2>四、设备权限说明</h2>
+    <ul>
+      <li><strong>网络：</strong>用于建立 SSH 连接，直接连接您指定的服务器，不经过我们的代理。</li>
+      <li><strong>Face ID / 指纹（生物识别）：</strong>仅在您开启应用锁时使用，认证在设备本地完成，生物特征数据不离开设备。</li>
+      <li><strong>文件访问：</strong>仅在您主动导入 SSH 私钥文件时使用，读取后即存入 Keychain，不保留原始文件副本。</li>
+    </ul>
+
+    <h2>五、信息的存储与安全</h2>
+    <ul>
+      <li>SSH 私钥与密码存储于系统 Keychain，受设备级加密保护。</li>
+      <li>匿名统计数据存储于我们自托管的服务器（中国境内）。</li>
+      <li>我们不出售、不租用您的任何信息。</li>
+    </ul>
+
+    <h2>六、您的权利</h2>
+    <ul>
+      <li><strong>查看与删除：</strong>您可在应用内随时查看、编辑或删除已保存的主机和密钥；</li>
+      <li><strong>关闭统计：</strong>如不希望发送匿名统计，可通过系统设置关闭应用的网络权限（注意这会同时影响 SSH 连接）；</li>
+      <li><strong>投诉与反馈：</strong>如有疑问，可通过下方"联系我们"与我们联系。</li>
+    </ul>
+
+    <h2>七、未成年人保护</h2>
+    <p>本应用主要面向成年专业用户。我们不会主动向未成年人收集个人信息。</p>
+
+    <h2>八、政策更新</h2>
+    <p>我们可能适时修订本政策并更新"生效日期"。对于重大变更，我们会通过应用内提示告知。继续使用即视为接受修订后的政策。</p>
+
+    <h2>九、联系我们</h2>
+    <ul>
+      <li>运营方：Wenbo Qiu</li>
+      <li>联系邮箱：<a href="mailto:wondergarden.app@qq.com">wondergarden.app@qq.com</a></li>
+    </ul>
+
+    <footer class="doc-footer">© 2026 Wenbo Qiu ｜ Bolt SSH</footer>
+  </div>
+
+  <!-- ───────── English ───────── -->
+  <div class="wrap lang-en">
+    <header class="doc-header">
+      <span class="app">Bolt SSH</span>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Effective: July 11, 2026 ｜ Last updated: July 11, 2026</p>
+    </header>
+
+    <p>
+      Wenbo Qiu ("we", "us") respects your privacy. This Privacy Policy explains how we collect, use,
+      and protect information when you use Bolt SSH (the "App"), and the rights you have over that information.
+    </p>
+
+    <div class="note">
+      We collect data on a "need-based, minimal" principle. Your SSH credentials, private keys, and terminal
+      session content <strong>always stay on your device or travel directly to your own server</strong> —
+      our servers never touch this data.
+    </div>
+
+    <h2>1. Information We Collect and How We Use It</h2>
+    <table>
+      <thead>
+        <tr><th>Scenario</th><th>Information</th><th>Purpose</th><th>Storage</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Host management</td>
+          <td>Host IP, port, username, label, color tag (passwords excluded unless you enable "Save password")</td>
+          <td>Store host list locally on device</td>
+          <td>On-device (SharedPreferences)</td>
+        </tr>
+        <tr>
+          <td>SSH keys</td>
+          <td>Private key file content you import</td>
+          <td>SSH key authentication</td>
+          <td>System Keychain (encrypted)</td>
+        </tr>
+        <tr>
+          <td>Saved password (optional)</td>
+          <td>Login password, when you explicitly enable "Save password"</td>
+          <td>Skip manual password entry on connect</td>
+          <td>System Keychain (encrypted)</td>
+        </tr>
+        <tr>
+          <td>App Lock</td>
+          <td>App lock on/off state</td>
+          <td>Determine whether Face ID / fingerprint is required at next launch</td>
+          <td>On-device</td>
+        </tr>
+        <tr>
+          <td>Anonymous usage analytics</td>
+          <td>In-app behavior events (e.g. app open, connection success/failure, tab and key management actions) — <strong>no personally identifiable information</strong></td>
+          <td>Understand feature usage to guide product improvements</td>
+          <td>Our self-hosted Pulse analytics (pulse.wondergarden.top)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>2. SSH Connections &amp; Terminal Content</h2>
+    <p>
+      Commands you type and server responses travel <strong>directly between your device and your own SSH server</strong>,
+      encrypted by the SSH protocol. They do not pass through our servers and we have no access to them.
+    </p>
+    <p>
+      Host key fingerprints are stored locally on your device for TOFU (Trust On First Use) verification,
+      protecting against man-in-the-middle attacks. They are never uploaded to our servers.
+    </p>
+
+    <h2>3. Third-Party Services</h2>
+    <table>
+      <thead><tr><th>Third party</th><th>Purpose</th><th>Information involved</th></tr></thead>
+      <tbody>
+        <tr><td>Apple (IAP, enabled when Pro launches)</td><td>App Store subscription and payment</td><td>Transaction receipts</td></tr>
+        <tr><td>Self-hosted Pulse analytics</td><td>Anonymous usage statistics</td><td>Anonymous behavior events (see table above)</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      The App <strong>does not integrate any third-party advertising or cross-app tracking SDK</strong>,
+      and does not collect device identifiers for ad targeting.
+    </div>
+
+    <h2>4. Device Permissions</h2>
+    <ul>
+      <li><strong>Network:</strong> used to establish SSH connections directly to the server you specify — not proxied through us.</li>
+      <li><strong>Face ID / fingerprint (biometrics):</strong> used only when App Lock is enabled; authentication is performed on-device and biometric data never leaves your device.</li>
+      <li><strong>File access:</strong> used only when you actively import an SSH private key file; after import the key is stored in the Keychain and no copy of the original file is retained.</li>
+    </ul>
+
+    <h2>5. Storage &amp; Security</h2>
+    <ul>
+      <li>SSH private keys and passwords are stored in the system Keychain, protected by device-level encryption.</li>
+      <li>Anonymous analytics data is stored on our self-hosted server.</li>
+      <li>We do not sell or rent any of your information.</li>
+    </ul>
+
+    <h2>6. Your Rights</h2>
+    <ul>
+      <li><strong>Access &amp; deletion:</strong> you can view, edit, or delete saved hosts and keys in the App at any time;</li>
+      <li><strong>Opt out of analytics:</strong> you can revoke the App's network permission in system settings (note this will also disable SSH connections);</li>
+      <li><strong>Feedback &amp; complaints:</strong> contact us via the address below with any questions.</li>
+    </ul>
+
+    <h2>7. Children</h2>
+    <p>The App is intended primarily for adult professional users. We do not knowingly collect personal information from minors.</p>
+
+    <h2>8. Updates to This Policy</h2>
+    <p>We may revise this Policy from time to time and update the "Effective" date. For material changes we will notify you via an in-app notice. Continued use after a change takes effect constitutes acceptance.</p>
+
+    <h2>9. Contact Us</h2>
+    <ul>
+      <li>Operator: Wenbo Qiu</li>
+      <li>Email: <a href="mailto:wondergarden.app@qq.com">wondergarden.app@qq.com</a></li>
+    </ul>
+
+    <footer class="doc-footer">© 2026 Wenbo Qiu ｜ Bolt SSH</footer>
+  </div>
+
+  <script>
+    const btns = [...document.querySelectorAll(".lang-switch button")];
+    function setLang(lang) {
+      document.body.className = "l-" + lang;
+      document.documentElement.lang = lang === "en" ? "en" : "zh-Hans";
+      btns.forEach(b => b.classList.toggle("on", b.dataset.lang === lang));
+      window.scrollTo(0, 0);
+    }
+    btns.forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+    const nav = (navigator.language || "").toLowerCase();
+    setLang(nav.startsWith("zh") ? "hans" : "en");
+  </script>
+</body>
+</html>
