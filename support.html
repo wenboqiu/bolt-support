@@ -185,6 +185,21 @@
     </ul>
 
     <p class="faq-q">
+      <span class="lang-hans">连上后是 cmd 不是 PowerShell 怎么办？</span>
+      <span class="lang-en">Landed in cmd instead of PowerShell?</span>
+    </p>
+    <p>
+      <span class="lang-hans">Windows OpenSSH 的默认 shell 是 <code>cmd.exe</code>，所以 PowerShell 命令（如 <code>Get-Process</code>）不被识别，目录恢复、预测建议等功能也不生效。在<strong>服务器上</strong>用<strong>管理员 PowerShell</strong> 执行下面任一条，把默认 shell 改成 PowerShell，然后重新连接：</span>
+      <span class="lang-en">The default shell for Windows OpenSSH is <code>cmd.exe</code>, so PowerShell commands (like <code>Get-Process</code>) aren't recognized and features such as directory recovery won't work. On the <strong>server</strong>, run one of the following in an <strong>elevated PowerShell</strong> to set the default shell to PowerShell, then reconnect:</span>
+    </p>
+    <p style="margin:14px 0 6px;"><span class="lang-hans">PowerShell 7（pwsh）：</span><span class="lang-en">PowerShell 7 (pwsh):</span></p>
+    <pre style="overflow-x:auto; padding:12px; border:1px solid var(--border); border-radius:8px; background:rgba(127,127,127,.08); font-size:13px; line-height:1.5;"><code>New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell `
+  -Value "C:\Program Files\PowerShell\7\pwsh.exe" -PropertyType String -Force</code></pre>
+    <p style="margin:14px 0 6px;"><span class="lang-hans">Windows 自带 PowerShell 5.1：</span><span class="lang-en">Built-in Windows PowerShell 5.1:</span></p>
+    <pre style="overflow-x:auto; padding:12px; border:1px solid var(--border); border-radius:8px; background:rgba(127,127,127,.08); font-size:13px; line-height:1.5;"><code>New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell `
+  -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force</code></pre>
+
+    <p class="faq-q">
       <span class="lang-hans">出现"主机密钥已变更"警告是什么意思？</span>
       <span class="lang-en">What does the "host key changed" warning mean?</span>
     </p>
