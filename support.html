@@ -18,6 +18,10 @@
     body.l-hans .lang-hans { display: inline; }
     body.l-en   .lang-en   { display: inline; }
     .faq-q { font-weight: 600; margin: 22px 0 6px; }
+    .err-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+    .err-table th, .err-table td { border: 1px solid var(--border); padding: 8px 10px; text-align: left; vertical-align: top; }
+    .err-table th { background: rgba(127,127,127,.08); font-weight: 600; }
+    .err-table code { white-space: nowrap; }
   </style>
 </head>
 <body class="l-hans">
@@ -88,8 +92,78 @@
       <span class="lang-en">What should I do if the connection fails?</span>
     </p>
     <p>
-      <span class="lang-hans">请按以下顺序检查：</span>
-      <span class="lang-en">Try the following in order:</span>
+      <span class="lang-hans">先按报错信息对号入座：</span>
+      <span class="lang-en">First, match your error message:</span>
+    </p>
+    <table class="err-table">
+      <thead>
+        <tr>
+          <th><span class="lang-hans">报错信息</span><span class="lang-en">Error</span></th>
+          <th><span class="lang-hans">含义</span><span class="lang-en">Meaning</span></th>
+          <th><span class="lang-hans">主因与处理</span><span class="lang-en">Cause &amp; fix</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>Connection refused</code></td>
+          <td>
+            <span class="lang-hans">端口被拒——机器可达，但没有服务在监听。</span>
+            <span class="lang-en">Port actively rejected — host is reachable but nothing is listening.</span>
+          </td>
+          <td>
+            <span class="lang-hans"><strong>sshd 未运行</strong>或端口填错。启动"OpenSSH SSH Server"服务，核对端口。</span>
+            <span class="lang-en"><strong>sshd not running</strong> or wrong port. Start the "OpenSSH SSH Server" service and check the port.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Connection timed out</code></td>
+          <td>
+            <span class="lang-hans">完全没有响应。</span>
+            <span class="lang-en">No response at all.</span>
+          </td>
+          <td>
+            <span class="lang-hans">IP 错、不在同一网络、<strong>防火墙静默丢包</strong>或主机关机。核对 IP、放行防火墙入站、确认同一网络。</span>
+            <span class="lang-en">Wrong IP, not on the same network, <strong>firewall dropping packets</strong>, or host down. Verify the IP, allow inbound in the firewall, and confirm the same network.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Permission denied</code></td>
+          <td>
+            <span class="lang-hans">已连上，但认证失败。</span>
+            <span class="lang-en">Connected, but authentication failed.</span>
+          </td>
+          <td>
+            <span class="lang-hans">用户名/密码/密钥或口令不对。核对凭据；密钥认证需确认公钥已加入服务器的 <code>authorized_keys</code>。</span>
+            <span class="lang-en">Wrong username / password / key / passphrase. Check credentials; for key auth, ensure the public key is in the server's <code>authorized_keys</code>.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>Host key changed</code></td>
+          <td>
+            <span class="lang-hans">主机密钥指纹与首次记录不符（即"主机密钥已变更"警告）。</span>
+            <span class="lang-en">Host key fingerprint differs from first connection (the "host key changed" warning).</span>
+          </td>
+          <td>
+            <span class="lang-hans">服务器重装或存在中间人。确认合法重装后，在主机菜单选<strong>「忘记主机密钥」</strong>再连。</span>
+            <span class="lang-en">Server reinstalled or a man-in-the-middle. If legitimately reinstalled, choose <strong>"Forget host key"</strong> in the host menu, then reconnect.</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>No route to host</code></td>
+          <td>
+            <span class="lang-hans">网络路由不通。</span>
+            <span class="lang-en">No network route to the host.</span>
+          </td>
+          <td>
+            <span class="lang-hans">网段 / VPN / 代理问题。检查设备网络与到主机的可达性。</span>
+            <span class="lang-en">Subnet / VPN / proxy issue. Check the device network and reachability to the host.</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      <span class="lang-hans">仍连不上，再按以下通用项排查：</span>
+      <span class="lang-en">Still failing? Run through these general checks:</span>
     </p>
     <ul>
       <li>
